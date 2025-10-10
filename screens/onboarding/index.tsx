@@ -1,4 +1,6 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LinearGradient } from 'expo-linear-gradient';
+import { router } from 'expo-router';
 import React, { useEffect, useRef } from 'react';
 import { Animated, Dimensions, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -339,6 +341,10 @@ export default function OnboardingScreen() {
 
 					{/* Continue button */}
 					<TouchableOpacity
+						onPress={() => {
+							AsyncStorage.setItem('authorized', 'true');
+							router.push(`/(tabs)/home`);
+						}}
 						style={{
 							backgroundColor: '#7c3aed',
 							borderRadius: 16,
